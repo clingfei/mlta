@@ -93,7 +93,7 @@ Argument *getParamByArgNo(Function *F, int8_t ArgNo);
 
 size_t funcHash(Function *F, bool withName = false);
 size_t callHash(CallInst *CI);
-void structTypeHash(StructType *STy, set<size_t> &HSet);
+void structTypeHash(StructType *STy, std::set<size_t> &HSet);
 size_t typeHash(Type *Ty);
 size_t typeIdxHash(Type *Ty, int Idx = -1);
 size_t hashIdxHash(size_t Hs, int Idx = -1);

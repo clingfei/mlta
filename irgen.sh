@@ -1,8 +1,8 @@
 # Configurations
 
-KERNEL_SRC="$(pwd)/../kernels/linux"
+KERNEL_SRC="/home/clf/linux-6.1.38"
 IRDUMPER="$(pwd)/IRDumper/build/lib/libDumper.so"
-CLANG="$(pwd)/llvm-project/prefix/bin/clang"
+CLANG="/home/clf/llvm-15.0.0/build/bin/clang"
 CONFIG="defconfig"
 #CONFIG="allyesconfig"
 
@@ -15,11 +15,11 @@ KBUILD_USERCFLAGS += -Wno-error -g -Xclang -no-opaque-pointers -Xclang -flegacy-
 
 if [ ! -f "$KERNEL_SRC/Makefile.bak" ]; then
 	echo "Back up Linux Makefile first"
-	exit -1
+	exit 1
 fi
 
 # The new flags better follow "# Add user supplied CPPFLAGS, AFLAGS and CFLAGS as the last assignments"
-echo -e $NEW_CMD >$KERNEL_SRC/IRDumper.cmd
+echo `-e` "$NEW_CMD" >$KERNEL_SRC/IRDumper.cmd
 cat $KERNEL_SRC/Makefile.bak $KERNEL_SRC/IRDumper.cmd >$KERNEL_SRC/Makefile
 
 cd $KERNEL_SRC && make $CONFIG

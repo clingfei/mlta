@@ -34,7 +34,7 @@
 
 
 using namespace llvm;
-
+using namespace std;
 
 //
 // Implementation
